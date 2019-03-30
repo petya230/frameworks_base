@@ -297,10 +297,12 @@ public class Camera {
          * if the package name does not falls in this bucket
          */
         String packageList = SystemProperties.get("vendor.camera.aux.packagelist", "");
+        String packageList2 = SystemProperties.get("vendor.camera.aux.packagelist2", "");
         String packageBlacklist = SystemProperties.get("vendor.camera.aux.packageblacklist", "");
-        if (!packageList.isEmpty()) {
+        if ((!packageList.isEmpty() || !packageList2.isEmpty())) {
             exposeAuxCamera = false;
-            if (Arrays.asList(packageList.split(",")).contains(packageName)) {
+            if ((Arrays.asList(packageList.split(",")).contains(packageName) ||
+                 Arrays.asList(packageList2.split(",")).contains(packageName))) {
                 exposeAuxCamera = true;
             }
         } else if (!packageBlacklist.isEmpty()) {
