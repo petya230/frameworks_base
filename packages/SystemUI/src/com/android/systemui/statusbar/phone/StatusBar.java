@@ -4042,13 +4042,13 @@ public class StatusBar extends SystemUI implements DemoMode,
         int uiSelectorSetting = Settings.System.getIntForUser(mContext.getContentResolver(),
                 Settings.System.UI_SWITCHER, 0, mLockscreenUserManager.getCurrentUserId());
         if (uiSelectorSetting == 0) {
-            ThemeUtils.unloadUiThemes(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
+            ThemeUtils.unloadUiThemes(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), mContext);
             reevaluateStyles();
         }
 
         else {
-            ThemeUtils.unloadUiThemes(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
-            ThemeUtils.loadUiThemes(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), uiSelectorSetting);
+            ThemeUtils.unloadUiThemes(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), mContext);
+            ThemeUtils.loadUiThemes(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), uiSelectorSetting, mContext);
             reevaluateStyles();
         }
     }
