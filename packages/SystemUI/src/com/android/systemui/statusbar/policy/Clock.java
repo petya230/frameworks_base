@@ -306,14 +306,6 @@ public class Clock extends TextView implements DemoMode, Tunable, CommandQueue.C
                 || STATUS_BAR_CLOCK.equals(key)) {
             updateSettings(key, newValue);
         }
-        if (CLOCK_SECONDS.equals(key)) {
-            mShowSeconds = TunerService.parseIntegerSwitch(newValue, false);
-            updateShowSeconds();
-        } else {
-            setClockVisibleByUser(!StatusBarIconController.getIconBlacklist(newValue)
-                    .contains("clock"));
-            updateClockVisibility();
-        }
     }
 
     @Override
