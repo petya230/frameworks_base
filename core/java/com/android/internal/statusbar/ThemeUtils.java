@@ -22,6 +22,8 @@ import android.content.om.OverlayInfo;
 import android.os.RemoteException;
 import android.util.Log;
 
+import com.android.internal.util.descendant.Utils;
+
 public class ThemeUtils {
 
     public static final String TAG = "DescendantThemerUtility";
@@ -106,6 +108,7 @@ public class ThemeUtils {
                 String[] selectedArray = ARRAYSUITHEMES[i];
                     for (int in = 0; in < selectedArray.length; in++) {
                         try {
+                            Utils.showSystemUiRestartDialog(getContext());
                             om.setEnabled(selectedArray[in], false, userId);
                             } catch (RemoteException e) {
                                 Log.e(TAG,"unloadUiThemes routine has failed!");
@@ -131,6 +134,7 @@ public class ThemeUtils {
                 switch (setting) {
                     case 1: for (int i = 0; i < SQUAREUITHEME.length; i++) {
                               try {
+                                  Utils.showSystemUiRestartDialog(getContext());
                                   om.setEnabled(SQUAREUITHEME[i], true, userId);
                                   } catch(RemoteException e) {
                                     Log.e(TAG,"loadUiThemes routine has failed!");
@@ -140,6 +144,7 @@ public class ThemeUtils {
 
                     case 2: for (int i = 0; i < ROUNDIERUITHEME.length; i++) {
                               try {
+                                  Utils.showSystemUiRestartDialog(getContext());
                                   om.setEnabled(ROUNDIERUITHEME[i], true, userId);
                                   } catch(RemoteException e) {
                                     Log.e(TAG,"loadUiThemes routine has failed!");
