@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.internal.statusbar;
+package com.android.systemui;
 
 import android.content.Context;
 import android.content.om.IOverlayManager;
