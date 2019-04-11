@@ -22,8 +22,6 @@ import android.content.om.OverlayInfo;
 import android.os.RemoteException;
 import android.util.Log;
 
-import com.android.internal.util.descendant.Utils;
-
 public class ThemeUtils {
 
     public static final String TAG = "DescendantThemerUtility";
@@ -103,12 +101,11 @@ public class ThemeUtils {
         /* end of list */
 
         /* methods to unload and load icons plus ui themes */
-        public static void unloadUiThemes (IOverlayManager om, int userId, Context mCon) {
+        public static void unloadUiThemes (IOverlayManager om, int userId) {
             for (int i = 0; i < ARRAYSUITHEMES.length; i++) {
                 String[] selectedArray = ARRAYSUITHEMES[i];
                     for (int in = 0; in < selectedArray.length; in++) {
                         try {
-                            Utils.showSystemUiRestartDialog(mCon);
                             om.setEnabled(selectedArray[in], false, userId);
                             } catch (RemoteException e) {
                                 Log.e(TAG,"unloadUiThemes routine has failed!");
@@ -130,11 +127,10 @@ public class ThemeUtils {
                 }
         }
 
-        public static void loadUiThemes(IOverlayManager om, int userId, int setting, Context mCon) {
+        public static void loadUiThemes(IOverlayManager om, int userId, int setting) {
                 switch (setting) {
                     case 1: for (int i = 0; i < SQUAREUITHEME.length; i++) {
                               try {
-                                  Utils.showSystemUiRestartDialog(mCon);
                                   om.setEnabled(SQUAREUITHEME[i], true, userId);
                                   } catch(RemoteException e) {
                                     Log.e(TAG,"loadUiThemes routine has failed!");
@@ -144,7 +140,6 @@ public class ThemeUtils {
 
                     case 2: for (int i = 0; i < ROUNDIERUITHEME.length; i++) {
                               try {
-                                  Utils.showSystemUiRestartDialog(mCon);
                                   om.setEnabled(ROUNDIERUITHEME[i], true, userId);
                                   } catch(RemoteException e) {
                                     Log.e(TAG,"loadUiThemes routine has failed!");
