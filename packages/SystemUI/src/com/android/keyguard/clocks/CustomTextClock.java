@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.text.format.DateUtils;
 import android.text.format.DateFormat;
 import android.text.format.Time;
@@ -15,10 +16,15 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
 import android.provider.Settings;
+import android.graphics.Bitmap;
+import android.app.WallpaperManager;
+import android.graphics.drawable.BitmapDrawable;
 
 import java.util.TimeZone;
 
 import com.android.systemui.R;
+
+import android.support.v7.graphics.Palette;
 
 public class CustomTextClock extends TextView {
 
@@ -35,6 +41,8 @@ public class CustomTextClock extends TextView {
 
     private boolean h24;
 
+    private int mWallpaperColor;
+    
     public CustomTextClock(Context context) {
         this(context, null);
     }
@@ -47,6 +55,13 @@ public class CustomTextClock extends TextView {
 
         handType = a.getInteger(R.styleable.CustomTextClock_HandType, 2);
 
+        WallpaperManager wmInstance = WallpaperManager.getInstance(context);
+
+        Bitmap mBitmap = ( (BitmapDrawable) wmInstance.getDrawable()).getBitmap();
+
+        Palette palette = Palette.generate(mBitmap);
+        mWallpaperColor = palette.getVibrantColor(0x000000);
+                                
         mCalendar = new Time();
 
 
@@ -97,6 +112,9 @@ public class CustomTextClock extends TextView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        if (handType == 2) {
+            setTextColor(mWallpaperColor);
+        }
     }
 
     private void onTimeChanged() {
