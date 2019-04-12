@@ -84,5 +84,9 @@
     <!-- ThumbUI Tile -->
     <string name="quick_settings_thumbui_label">ThumbUI</string>
 
+    <!-- CustomText clock -->
+    <string name="high_noon_first_row">High</string>
+    <string name="high_noon_second_row">Noon</string>
+
 </resources>
 
