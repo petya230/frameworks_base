@@ -60,8 +60,7 @@ public class CustomTextClock extends TextView {
         Bitmap mBitmap = ( (BitmapDrawable) wmInstance.getDrawable()).getBitmap();
 
         Palette palette = Palette.generate(mBitmap);
-        mWallpaperColor = palette.getVibrantColor(0x000000);
-                                
+        mWallpaperColor = palette.getVibrantColor(16777215);
         mCalendar = new Time();
 
 
