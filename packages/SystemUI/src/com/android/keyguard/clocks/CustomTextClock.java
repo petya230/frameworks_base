@@ -272,7 +272,7 @@ public class CustomTextClock extends TextView {
             NumString = UnitsString[units].substring(2, UnitsString[units].length());
             return NumString;
         } 
-        if (num == 0) {
+        if (num <= 20) {
             return "null";
         }
         return NumString;
