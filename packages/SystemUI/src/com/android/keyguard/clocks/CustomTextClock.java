@@ -174,7 +174,7 @@ public class CustomTextClock extends TextView {
                     setText(R.string.high_noon_second_row);
                     } else {
                         if (minute == 0) {
-                            setVisibility(GONE);
+                            setText(UnitsString[0]);
                         }
                         if (!langExEval(curLang) && minute != 0) {
                             setVisibility(VISIBLE);
