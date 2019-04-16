@@ -26,13 +26,13 @@ import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.provider.Settings;
 import android.text.format.DateUtils;
 import android.text.format.DateFormat;
 import android.text.format.Time;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
-import android.provider.Settings;
 
 import com.android.internal.util.ArrayUtils;
 
@@ -148,10 +148,33 @@ public class CustomTextClock extends TextView {
                 break;
             case 1:
                 if (hour == 12 && minute == 0) {
-                setText(R.string.high_noon_second_row);
-                } else {
-                setText(getIntStringMin(minute));
-                }
+                    setText(R.string.high_noon_second_row);
+                    } else {
+                        if (minute == 0) {
+                            setVisibility(GONE);
+                        }
+                        if (!langExEval(curLang) && minute != 0) {
+                            setVisibility(VISIBLE);
+                            setText(getIntStringMinFirstRow(minute));
+                        } 
+                        if (langExEval(curLang)) {
+                            setVisibility(VISIBLE);
+                            setText(getIntStringMinOneLiner(minute));
+                        }
+                    }
+                break;
+            case 3:
+                if (!langExEval(curLang)) {
+                    if (getIntStringMinSecondRow(minute).contains("Clock") || getIntStringMinSecondRow(minute).contains("null")) {
+                        setVisibility(GONE);
+                    } else { 
+                        setText(getIntStringMinSecondRow(minute));
+                        setVisibility(VISIBLE);
+                    }
+                } 
+                if (langExEval(curLang)) { 
+                    setVisibility(GONE); 
+                } 
                 break;
             default:
                 break;
@@ -223,7 +246,39 @@ public class CustomTextClock extends TextView {
         return NumString;
     }
 
-    private String getIntStringMin (int num) {
+    private String getIntStringMinFirstRow (int num) {
+        int tens, units;
+        units = num % 10;
+        tens =  num / 10;
+        String NumString = "";
+        if ( units == 0 ) {
+            NumString = TensString[tens];
+        } else if (num < 10 ) {
+            NumString = UnitsString[num];
+        } else if (num >= 10 && num < 20) {
+            NumString = UnitsString[num];
+        } else if (num >= 20) {
+            NumString= TensString[tens];
+        }
+        return NumString;
+    }
+
+    private String getIntStringMinSecondRow (int num) {   
+        int tens, units;
+        units = num % 10;
+        tens =  num / 10;
+        String NumString = "";
+        if(num >= 20) {
+            NumString = UnitsString[units].substring(2, UnitsString[units].length());
+            return NumString;
+        } 
+        if (num <= 20) {
+            return "null";
+        }
+        return NumString;
+    }
+
+    private String getIntStringMinOneLiner (int num) {
         int tens, units;
         String NumString = "";
         if(num >= 20) {
