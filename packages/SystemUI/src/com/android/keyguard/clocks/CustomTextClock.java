@@ -212,18 +212,18 @@ public class CustomTextClock extends TextView {
                         if (minute == 0) {
                             setText(UnitsString[0]);
                         }
-                        if (!langExEval(curLang) && minute != 0) {
+                        if (!LangGuard.isAvailable(langExceptions,curLang) && minute != 0) {
                             setVisibility(VISIBLE);
                             setText(getIntStringMinFirstRow(minute));
                         } 
-                        if (langExEval(curLang)) {
+                        if (LangGuard.isAvailable(langExceptions,curLang)) {
                             setVisibility(VISIBLE);
                             setText(getIntStringMinOneLiner(minute));
                         }
                     }
                 break;
             case 3:
-                if (!langExEval(curLang)) {
+                if (!LangGuard.isAvailable(langExceptions,curLang)) {
                     if (getIntStringMinSecondRow(minute).contains("Clock") || getIntStringMinSecondRow(minute).contains("null")) {
                         setVisibility(GONE);
                     } else { 
@@ -231,7 +231,7 @@ public class CustomTextClock extends TextView {
                         setVisibility(VISIBLE);
                     }
                 } 
-                if (langExEval(curLang)) { 
+                if (LangGuard.isAvailable(langExceptions,curLang)) { 
                     setVisibility(GONE); 
                 } 
                 break;
