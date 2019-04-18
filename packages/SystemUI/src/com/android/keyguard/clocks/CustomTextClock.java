@@ -31,7 +31,6 @@ import android.text.format.DateUtils;
 import android.text.format.DateFormat;
 import android.text.format.Time;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.TextView;
 import android.app.WallpaperManager;
 import android.graphics.Color;
@@ -157,8 +156,6 @@ public class CustomTextClock extends TextView {
 
         int hour = mCalendar.hour;
         int minute = mCalendar.minute;
-
-        Log.d("CustomTextClock", ""+h24);
 
         if (!h24) {
             if (hour > 12) {
