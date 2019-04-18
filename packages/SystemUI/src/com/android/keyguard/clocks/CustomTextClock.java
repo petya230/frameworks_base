@@ -32,17 +32,11 @@ import android.text.format.DateFormat;
 import android.text.format.Time;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import android.app.WallpaperManager;
 import android.graphics.Color;
-import android.app.WallpaperColors;
-import android.support.v7.graphics.Palette;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import java.lang.NullPointerException;
 import java.lang.IllegalStateException;
 import android.graphics.Paint;
 import android.os.ParcelFileDescriptor;
-import android.graphics.BitmapFactory;
 
 import com.android.internal.util.ArrayUtils;
 import com.android.keyguard.clocks.ColorText;
@@ -91,7 +85,6 @@ public class CustomTextClock extends TextView {
 
         mContext = context;
         mCalendar = new Time();
-
 
     }
 
@@ -166,28 +159,30 @@ public class CustomTextClock extends TextView {
         switch(handType){
             case 0:
                 if (hour == 12 && minute == 0) {
-                setText(highNoonFirstRow);
-                } else {
-                setText(getIntStringHour(hour));
-                }
+                    setText(highNoonFirstRow);
+                        } else {
+                            setText(getIntStringHour(hour));
+                        }
                 break;
+
             case 1:
                 if (hour == 12 && minute == 0) {
                     setText(highNoonSecondRow);
-                    } else {
-                        if (minute == 0) {
-                            setText(UnitsString[0]);
-                        }
-                        if (!LangGuard.isAvailable(langExceptions,curLang) && minute != 0) {
-                            setVisibility(VISIBLE);
-                            setText(getIntStringMinFirstRow(minute));
-                        } 
-                        if (LangGuard.isAvailable(langExceptions,curLang)) {
-                            setVisibility(VISIBLE);
-                            setText(getIntStringMinOneLiner(minute));
-                        }
+                } else {
+                    if (minute == 0) {
+                        setText(UnitsString[0]);
                     }
+                    if (!LangGuard.isAvailable(langExceptions,curLang) && minute != 0) {
+                        setVisibility(VISIBLE);
+                        setText(getIntStringMinFirstRow(minute));
+                    }
+                    if (LangGuard.isAvailable(langExceptions,curLang)) {
+                        setVisibility(VISIBLE);
+                        setText(getIntStringMinOneLiner(minute));
+                    }
+                }
                 break;
+
             case 3:
                 if (!LangGuard.isAvailable(langExceptions,curLang)) {
                     if (getIntStringMinSecondRow(minute).contains("Clock") || getIntStringMinSecondRow(minute).contains("null")) {
@@ -201,11 +196,10 @@ public class CustomTextClock extends TextView {
                     setVisibility(GONE); 
                 } 
                 break;
+
             default:
                 break;
         }
-
-
         updateContentDescription(mCalendar, getContext());
     }
 
@@ -282,9 +276,7 @@ public class CustomTextClock extends TextView {
     }
 
     private String getIntStringMinSecondRow (int num) {   
-        int tens, units;
-        units = num % 10;
-        tens =  num / 10;
+        int units = num % 10;
         String NumString = "";
         if(num >= 20) {
             NumString = UnitsString[units].substring(2, UnitsString[units].length());
@@ -316,7 +308,6 @@ public class CustomTextClock extends TextView {
         } else if (num >= 10 && num < 20) {
             NumString = UnitsString[num];
         }
-
         return NumString;
     }
 
