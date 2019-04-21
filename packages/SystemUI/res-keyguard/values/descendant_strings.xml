@@ -23,5 +23,6 @@
     <string name="high_noon_first_row">High</string>
     <string name="high_noon_second_row">Noon</string>
     <string name="midnight">Midnight</string>
+    <string name="midnight_top_row">It\'s</string>
 
 </resources>

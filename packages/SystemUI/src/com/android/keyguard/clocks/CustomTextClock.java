@@ -60,6 +60,8 @@ public class CustomTextClock extends TextView {
     private String topText = getResources().getString(R.string.custom_text_clock_top_text_default);
     private String highNoonFirstRow = getResources().getString(R.string.high_noon_first_row);
     private String highNoonSecondRow = getResources().getString(R.string.high_noon_second_row);
+    private String midnight = getResources().getString(R.string.midnight);
+    private String midnight_top_row = getResources().getString(R.string.midnight_top_row);
 
     private Time mCalendar;
 
@@ -158,6 +160,9 @@ public class CustomTextClock extends TextView {
 
         switch(handType){
             case 0:
+                if (hour == 0 && minute == 0) {
+                    setText(midnight);
+                }    
                 if (hour == 12 && minute == 0) {
                     setText(highNoonFirstRow);
                         } else {
@@ -170,6 +175,9 @@ public class CustomTextClock extends TextView {
                 break;
 
             case 1:
+                if (hour == 0 && minute == 0) {
+                    setVisibility(GONE);
+                }
                 if (hour == 12 && minute == 0) {
                     setText(highNoonSecondRow);
                 } else {
@@ -191,7 +199,14 @@ public class CustomTextClock extends TextView {
                 }
                 break;
 
+            case 2:
+                if (hour == 0 && minute == 0) {
+                    setText(midnight_top_row);
+                }
             case 3:
+                if (hour == 0 && minute == 0) {
+                    setVisibility(GONE);
+                }                                                                
                 if (!LangGuard.isAvailable(langExceptions,curLang)) {
                     if (getIntStringMinSecondRow(minute).contains("Clock") || getIntStringMinSecondRow(minute).contains("null")) {
                         setVisibility(GONE);
