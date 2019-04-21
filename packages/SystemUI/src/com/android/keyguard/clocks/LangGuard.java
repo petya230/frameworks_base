@@ -114,13 +114,13 @@ public class LangGuard {
             case "it":
                 if (units == 1) {
                     numString = TensStringH[tens].substring(0, TensStringH[tens].length() - 1)+
-                                UnitsStringH[units].toLowerCase() + " e";
+                                UnitsString[units].toLowerCase() + " e";
                     return numString;
                 } else if (units == 3) {
-                    numString = TensStringH[tens] + "tré";
+                    numString = TensStringH[tens] + "tré" + " e";
                     return numString;                    
                 } else { 
-                    numString = TensStringH[tens] + UnitsStringH[units].toLowerCase();
+                    numString = TensStringH[tens] + UnitsString[units].toLowerCase();
                     return numString;
                 }
         }
