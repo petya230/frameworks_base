@@ -23,5 +23,6 @@
     <string name="custom_text_clock_top_text_default">Jest</string>
     <string name="high_noon_first_row">Dokładnie</string>
     <string name="high_noon_second_row">Południe</string>
-
+    <string name="midnight">Północ</string>
+    <string name="midnight_top_row">Jest</string>
 </resources>

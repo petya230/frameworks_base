@@ -22,6 +22,8 @@
     <string name="custom_text_clock_top_text_default">Het is</string>
     <string name="high_noon_first_row">Midden op</string>
     <string name="high_noon_second_row">De dag</string>
+    <string name="midnight">Middernacht</string>
+    <string name="midnight_top_row">Het is</string>
 
 </resources>
 
