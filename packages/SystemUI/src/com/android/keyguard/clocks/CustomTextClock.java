@@ -244,6 +244,8 @@ public class CustomTextClock extends TextView {
                 highNoonFirstRow = getResources().getString(R.string.high_noon_first_row);
                 highNoonSecondRow = getResources().getString(R.string.high_noon_second_row);
                 langHasChanged = true;
+                midnight = getResources().getString(R.string.midnight);
+                midnight_top_row = getResources().getString(R.string.midnight_top_row);
             }
 
             onTimeChanged();
