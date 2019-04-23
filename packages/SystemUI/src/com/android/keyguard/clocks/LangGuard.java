@@ -75,6 +75,10 @@ public class LangGuard {
             case "tr":
                 numString = TensString[tens] + " " + UnitsString[units];
                 return numString;
+
+            case "hu":
+                numString = TensString[tens] + " " + UnitsString[units];
+                return numString;
         }
         return numString;
     }
@@ -142,6 +146,10 @@ public class LangGuard {
 
             case "tr":
                 numString = TensStringH[tens] + " " + UnitsString[units];
+                return numString;
+
+            case "hu":
+                numString = TensString[tens] + " " + UnitsString[units];
                 return numString;
         }
         return numString;
