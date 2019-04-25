@@ -21,8 +21,8 @@
 
     <string-array translatable="true" name="TensString">
         <item></item>
-        <item>Tíz</item>
-        <item>Húsz</item>
+        <item>Tizen</item>
+        <item>Huszon</item>
         <item>Harminc</item>
         <item>Negyven</item>
         <item>Ötven</item>
